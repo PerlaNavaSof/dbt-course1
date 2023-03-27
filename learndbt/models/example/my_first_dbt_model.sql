@@ -6,14 +6,18 @@
 
     Try changing "table" to "view" below
 */
-
-{{ config(materialized='table') }}
+--ephemeral models is a great way to store common tables expressions in a query that you
+--want to use within multiple models and make sure that you have all your logic
+--stored in one place
+{{ config(materialized='table', alias= 'first_model') }}
 
 with source_data as (
 
     select 1 as id
     union all
-    select null as id
+    select 2 as id
+    union all
+    select 3 as id
 
 )
 
@@ -24,4 +28,4 @@ from source_data
     Uncomment the line below to remove records with null `id` values
 */
 
--- where id is not null
+ --where id is not null

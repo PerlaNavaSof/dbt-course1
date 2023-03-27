@@ -6,6 +6,7 @@ name: 'dbt_course_perlanava'
 version: '1.0.0'
 config-version: 2
 
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'learndbt'
 
@@ -35,4 +36,4 @@ models:
   dbt_course_perlanava:
     # Config indicated by + and applies to all files under models/example/
     example:
-      +materialized: view
+      +materialized: table

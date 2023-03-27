@@ -1,4 +1,3 @@
-{{ config(materialized='table') }}
 
 select
     O_ORDERDATE,  

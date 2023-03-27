@@ -19,6 +19,9 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              to: ref('my_first_dbt_model')
+              field: id
 
   - name: snowflake_customer_purchases
     description: "snowflake"
@@ -34,3 +37,12 @@ models:
     columns:
       - name: O_ORDERDATE
         description: "The primary key for this table"
+
+  - name: incremental_time
+
+  - name: playing_with_test
+    columns:
+      - name: c_custkey
+        tests:
+          - unique
+          - not_null

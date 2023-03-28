@@ -12,5 +12,4 @@ from orders
 {% if target.name == 'dev' %}
     where year(O_ORDERDATE)= 1996
 {% endif %}
-
 order by O_ORDERDATE

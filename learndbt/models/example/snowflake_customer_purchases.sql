@@ -1,13 +1,20 @@
+with sample_customer as(
+    select *
+    from {{ source('sample','customer')}}
+),
+
+sample_order as(
+    select *
+    from {{ source('sample','orders')}}
+)
+
 select 
     c.c_custkey,
     c.c_name,
     c.c_nationkey as nation,
     sum(o.o_totalprice) as total_order_price
-from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."CUSTOMER" c
-left join "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."ORDERS" o
+from sample_customer c
+left join sample_order o
 on c.C_CUSTKEY=o.O_CUSTKEY
 
-group by 
-    c.c_custkey,
-    c.c_name,
-    c.c_nationkey
+{{group_by(3)}}
